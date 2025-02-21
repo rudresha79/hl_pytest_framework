@@ -1,0 +1,1 @@
+pytest -s -v --alluredir=target\allure-results testcases\test_campaigns.py

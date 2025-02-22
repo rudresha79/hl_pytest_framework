@@ -4,7 +4,6 @@ import glob
 import os
 import time
 import allure
-import pandas as pd
 import pytest
 from allure_commons.types import AttachmentType
 from selenium.common import NoSuchElementException, TimeoutException, ElementClickInterceptedException, NoAlertPresentException, UnexpectedAlertPresentException, StaleElementReferenceException

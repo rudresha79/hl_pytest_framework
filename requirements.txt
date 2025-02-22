@@ -5,10 +5,4 @@ pytest-html
 pytest-xdist
 openpyxl
 allure-pytest
-pandas
-PyAutoGUI
-PyGetWindow
-opencv-python
-matplotlib
-xlwings
 

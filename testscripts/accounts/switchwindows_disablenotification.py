@@ -18,7 +18,7 @@ time.sleep(2)
 driver.find_element(By.XPATH,"//*[@id='HTML4']/div[1]/button").click()
 time.sleep(2)
 
-
+driver.current_window_handle
 
 #After opening all the pages, capture windowid's
 windowIds=driver.window_handles

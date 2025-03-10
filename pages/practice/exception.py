@@ -14,5 +14,5 @@ num=-1
 try:
     enterage(num)
 except ValueError:
-    print("value error exception occurted and handled..")
+    print("value error exception occured and handled..")
 print("program completed....")

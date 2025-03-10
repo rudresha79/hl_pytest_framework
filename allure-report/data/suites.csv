@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Mar 07 23:19:20 IST 2025","Fri Mar 07 23:20:32 IST 2025","71711","accounts","test_001_work_cathode","Test_Open_Stocks_Shares_ISA","","","test_work_cathode[data0]",""

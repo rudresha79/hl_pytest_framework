@@ -12,10 +12,10 @@ class Test_Register_Online:
 
     @pytest.mark.parametrize("data", td.read_excel_test_data(
         conf.test_data_folder_rootpath, "Register"))
-
     @pytest.mark.sanity
     def test_reg_online(self, setup, data):
 
+        print(data)
         self.driver = setup
         url = data['URL']
 

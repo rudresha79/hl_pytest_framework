@@ -2,7 +2,7 @@ import time
 
 
 class Test_01:
-    def test_method1(self,setup):
+    def test_method1_skip(self,setup):
         print("Method1")
         time.sleep(10)
     def test_method2(self):

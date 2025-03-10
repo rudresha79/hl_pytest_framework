@@ -21,7 +21,7 @@ from testscripts.conftest import driver
 
 class utility:
 
-    default_timeout = 10
+    default_timeout = 60
     def __init__(self, driver):
         self.driver = driver
 
@@ -191,3 +191,72 @@ class utility:
                 pytest.fail(f"Failed to verify the element/value {element_name}: {type(e).__name__} - {str(e)}")
 
     ###############################################################################################################################################################
+
+    #####################################################################-- Select Item from dropdown --############################################################################################
+    # Function:verify_element_is_present - Verifies if a particular element is present or not
+    # Parameters:
+    #           locators: (By.XPATH, self.link_dashboard)
+    #           elementName: Dashboard link
+    # Revision History:
+
+    def select_item_from_dropdown(self, locators,stritemname):
+        locator_type = locators[0]
+        locator_property = locators[1]
+        element_name = locators[2]
+        locators = locators[0], locators[1]
+        with allure.step("select " + stritemname + " from the dropdown " + element_name):
+            try:
+                # Wait for the element to be clickable
+                WebDriverWait(self.driver, self.default_timeout).until(
+                     EC.visibility_of_element_located(locators))
+                self.driver.find_element(locator_type, locator_property).click()
+                # ele_ment = self.driver.find_element(locator_type, locator_property)
+                # # Verify if the element is present
+                # if ele_ment.is_displayed:
+                #    ele_ment.click()
+                time.sleep(1)
+                xpathofitem = "//li[text()='" + stritemname + "']"
+                self.driver.find_element(By.XPATH,xpathofitem).click()
+            except (NoSuchElementException, TimeoutException, ElementClickInterceptedException,
+                    StaleElementReferenceException) as e:
+                # Attach a screenshot to the allure report if an exception occurs
+                allure.attach(self.driver.get_screenshot_as_png(), name=f"{element_name}_screenshot",
+                              attachment_type=allure.attachment_type.PNG,
+                              )
+                # Fail the test with the exception message
+                # pytest.fail(f"Failed to click on {element_name}: + type(exception).__name__ + {str(e)}")
+                pytest.fail(f"Failed to verify the element/value {element_name}: {type(e).__name__} - {str(e)}")
+
+    ###############################################################################################################################################################
+#####################################################################-- Select Item from dropdown- option --############################################################################################
+    # Function:verify_element_is_present - Verifies if a particular element is present or not
+    # Parameters:
+    #           locators: (By.XPATH, self.link_dashboard)
+    #           elementName: Dashboard link
+    # Revision History:
+    def select_item_from_dropdown_option(self, locators,stritemname):
+        locator_type = locators[0]
+        locator_property = locators[1]
+        element_name = locators[2]
+        locators = locators[0], locators[1]
+        with allure.step("select " + stritemname + " from the dropdown " + element_name):
+            try:
+                # Wait for the element to be clickable
+                WebDriverWait(self.driver, self.default_timeout).until(
+                     EC.visibility_of_element_located(locators))
+                option = self.driver.find_element(locator_type, locator_property)
+                self.driver.execute_script("arguments[0].scrollIntoView();", option)
+                dropdown = Select(option)
+                dropdown.select_by_visible_text(stritemname)
+                time.sleep(1)
+            except (NoSuchElementException, TimeoutException, ElementClickInterceptedException,
+                    StaleElementReferenceException) as e:
+                # Attach a screenshot to the allure report if an exception occurs
+                allure.attach(self.driver.get_screenshot_as_png(), name=f"{element_name}_screenshot",
+                              attachment_type=allure.attachment_type.PNG,
+                              )
+                # Fail the test with the exception message
+                # pytest.fail(f"Failed to click on {element_name}: + type(exception).__name__ + {str(e)}")
+                pytest.fail(f"Failed to verify the element/value {element_name}: {type(e).__name__} - {str(e)}")
+
+    ##############################################################################################################################################################

@@ -19,6 +19,7 @@ class Test_Open_Stocks_Shares_ISA:
     @pytest.mark.regression
     def test_stocks_shares_isa(self,setup,data):
 
+        print(data)
         self.driver = setup
 
         url = data['URL']

@@ -4,36 +4,28 @@ from selenium import webdriver
 
 driver = None
 
-@pytest.fixture(scope="function")
-def setup():
+@pytest.fixture(scope="session")
+def setup(request):
+    browser_name = request.config.getoption("--browser").lower()
     global driver
-    driver = webdriver.Edge()
-
-    # if browser == "chrome":
-    #     from selenium.webdriver.chrome.service import Service
-    #     serv_obj = Service("C:\\Drivers\\chromedriver_win32\\chromedriver.exe")
-    #     driver = webdriver.Chrome(service=serv_obj)
-    # elif browser == "edge":
-    #     from selenium.webdriver.edge.service import Service
-    #     serv_obj = Service("C:\\Drivers\\edgedriver_win64\\msedgedriver.exe")
-    #     driver = webdriver.Edge(service=serv_obj)
-    # elif browser == "firefox":
-    #     from selenium.webdriver.firefox.service import Service
-    #     serv_obj = Service("C:\\Drivers\\geckodriver-v0.29.1-win64\\geckodriver.exe")
-    #     driver = webdriver.Firefox(service=serv_obj)
-    # return driver
-
-
+    if browser_name == "edge":
+        driver = webdriver.Edge()
+    elif browser_name == "firefox":
+        driver = webdriver.Firefox()
+    elif browser_name == "chrome":
+        driver = webdriver.Chrome()
+    else:
+        raise ValueError(f"Unsupported browser: {browser_name}")
     yield driver
     driver.quit()
 
 
-# def pytest_adaption(parser):
-#     parser.adoption("--browser")
-#
-#
-# @pytest.fixture()
-# def browser(request):
-#     return request.config.getoption("--browser")
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser", action="store", default="edge", help="Choose browser: chrome, firefox, edge"
+    )
 
-
+def pytest_collection_modifyitems(items):
+    for item in items:
+        if "skip" in item.name:
+            item.add_marker(pytest.mark.skip(reason="Skipping test as per hook logic"))

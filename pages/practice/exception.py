@@ -10,7 +10,7 @@ def enterage(num):
         print("odd")
 
 print("checking number is even or odd by calling function..")
-num=-1
+num=1
 try:
     enterage(num)
 except ValueError:

@@ -56,6 +56,7 @@ if "apple" in mytuple:
     print("Yes, 'apple' is in the fruits tuple")
 #Join two tuples:
 tuple1 = ("a", "b", "c")
+tuple1
 tuple2 = (1, 2, 3)
 tuple3 = tuple1 + tuple2
 print(tuple3)

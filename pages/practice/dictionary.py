@@ -1,8 +1,8 @@
 #Dictionary  - {Key:value}
 dict1 = {
     "1":"one",
-    2:"two",
-    3:"Three"
+    3:"two",
+    2:"Three"
 }
 print(dict1)
 # Accessing the dictionary both key and value

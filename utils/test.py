@@ -3,9 +3,10 @@ import pandas as pd
 
 def read_excel_sheet_as_dict(file_path, sheet_name):
     # Read the specific sheet into a DataFrame
-    df = pd.read_excel(file_path, sheet_name=sheet_name)
+    df = pd.read_excel(file_path, sheet_name=sheet_name,usecols=["URL","Execute"])
     # Convert DataFrame to list of dictionaries
     filtered_df = df[df['Execute'] == 'Yes']
+    print(filtered_df)
     return filtered_df.to_dict(orient="records")
 
 

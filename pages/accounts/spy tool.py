@@ -57,7 +57,7 @@ while driver.current_window_handle :
         print(json.dumps(properties, indent=4))
 
         # Save to a JSON file
-        with open("captured_element_properties.json", "w") as file:
+        with open("../practice/captured_element_properties.json", "w") as file:
             json.dump(properties, file, indent=4)
 
         print("✅ Element properties saved to 'captured_element_properties.json'")

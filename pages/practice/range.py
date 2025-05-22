@@ -12,8 +12,10 @@ c = 12345
 d = str(c)
 print(len(d))
 b= c % 10
+print(b)
 
 c = c //10
+print(float(c))
 
 #
 

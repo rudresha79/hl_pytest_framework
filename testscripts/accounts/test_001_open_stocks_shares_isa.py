@@ -13,8 +13,7 @@ class Test_Open_Stocks_Shares_ISA:
     #driver = None
 
     @pytest.mark.parametrize("data", td.read_excel_test_data(conf.test_data_folder_rootpath,
-                                                                     "Stocks and Shares ISA"))
-
+                                                                  "Stocks and Shares ISA"))
     @pytest.mark.sanity
     @pytest.mark.regression
     def test_stocks_shares_isa(self,setup,data):

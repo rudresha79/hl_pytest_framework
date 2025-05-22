@@ -2,7 +2,7 @@
 
 class Bank:
     def rateofinterest(self):
-        return 0
+        return 4
 
 class XBank(Bank):
     def rateofinterest(self):

@@ -14,7 +14,7 @@ class Test_Open_Stocks_Shares_ISA:
 
 
     @pytest.mark.parametrize("data", data_cathod)
-
+    
     @pytest.mark.sanity
     @pytest.mark.regression
     def test_work_cathode(self,setup,data):

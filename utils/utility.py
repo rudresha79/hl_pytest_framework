@@ -1,22 +1,13 @@
-import csv
-import getpass
-import glob
-import os
 import time
 import allure
 import pytest
-from allure_commons.types import AttachmentType
-from selenium.common import NoSuchElementException, TimeoutException, ElementClickInterceptedException, NoAlertPresentException, UnexpectedAlertPresentException, StaleElementReferenceException
-from selenium.webdriver import Keys
+from selenium.common import NoSuchElementException, TimeoutException, ElementClickInterceptedException, \
+    StaleElementReferenceException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
-
-from testscripts.conftest import driver
 
 
 class utility:
@@ -260,3 +251,6 @@ class utility:
                 pytest.fail(f"Failed to verify the element/value {element_name}: {type(e).__name__} - {str(e)}")
 
     ##############################################################################################################################################################
+
+
+
